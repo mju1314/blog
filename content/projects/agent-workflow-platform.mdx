@@ -1,0 +1,58 @@
+---
+title: "Agent 工作流平台"
+summary: "一个用于多 Agent 编排与工具调用的示例项目页。"
+date: "2026-04-02"
+updated: "2026-04-02"
+slug: "agent-workflow-platform"
+role: "全栈开发"
+status: "active"
+stack:
+  - Java
+  - Spring Boot
+  - Next.js
+  - PostgreSQL
+  - LLM
+tags:
+  - Agent
+  - 编排
+  - AI
+draft: false
+featured: true
+repo: "https://github.com/your-name/agent-workflow-platform"
+demo: ""
+---
+
+## 项目背景
+
+Agent 工作流平台是一个用于多 Agent 编排、工具调用和执行状态跟踪的示例项目。
+这一版项目介绍重点不放在“炫技”，而是把项目背景、系统边界、技术方案和关键取舍
+放到一个连续的叙事里讲清楚。
+
+这个项目的目标是把下面几件事串起来：
+
+- 原始问题是什么
+- 系统边界在哪里
+- 技术方案为什么这么选
+- 关键取舍是什么
+
+换句话说，中间这部分不再把“Agent 工作流”单独拆成一个独立模块，而是直接作为
+项目背景和整体设计的一部分来说明。
+
+## 架构设计
+
+这个平台可以拆成三个核心层次：
+
+1. 工作流定义层
+2. 运行时执行层
+3. 工具与模型适配层
+
+## 关键实现点
+
+- 模型调用要收敛在 provider adapter 后面
+- 工作流状态要可持久化，方便排查和回放
+- 工具 schema 在执行前必须完成校验
+
+## 最终结果
+
+第一版不需要做得很大。一个边界清晰、能真正跑起来、架构故事完整的产品，
+比一个看起来很大但表达含糊的 Demo 更有说服力。

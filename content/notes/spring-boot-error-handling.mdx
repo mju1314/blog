@@ -1,0 +1,52 @@
+---
+title: "Spring Boot 中统一异常处理的一种务实做法"
+summary: "这是一篇示例笔记，用来展示 Notes 内容类型的组织方式和渲染效果。"
+date: "2026-04-02"
+updated: "2026-04-02"
+slug: "spring-boot-error-handling"
+category: "Java"
+tags:
+  - spring-boot
+  - backend
+  - error-handling
+draft: false
+featured: true
+toc: true
+---
+
+## 为什么写这篇笔记
+
+这篇示例笔记的目的，是验证整个内容链路是否能正常工作：
+
+- frontmatter 会被 Content Collections 校验
+- MDX 会被正确编译
+- 代码块会带上高亮样式
+- 标题会自动进入目录
+
+## 一个简单可用的策略
+
+对于一个早期项目来说，通常至少要做到下面三点：
+
+1. validate request input at the edge
+2. throw domain-oriented exceptions in service code
+3. map them to stable response shapes in one place
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<ApiError> handleBadRequest(IllegalArgumentException exception) {
+    return ResponseEntity.badRequest().body(new ApiError("BAD_REQUEST", exception.getMessage()));
+  }
+}
+```
+
+### 后续可以继续补强什么
+
+随着应用复杂度上升，下一步通常要补上统一错误码、Trace ID，以及对外部
+接口错误和内部系统失败的清晰区分。
+
+<Callout tone="info" title="为什么选择 MDX">
+  MDX 的价值在于：技术笔记可以直接嵌入提示块、图示组件或者可复用的说明模块，
+  同时仍然保留以内容写作为核心的工作流。
+</Callout>
